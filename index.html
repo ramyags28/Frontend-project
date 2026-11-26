@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow | Productivity Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="logo">⚡ FocusFlow</div>
+
+        <nav>
+            <a href="#dashboard" class="nav-link active">🏠 Dashboard</a>
+            <a href="#tasks" class="nav-link">📋 My Tasks</a>
+            <a href="#focus" class="nav-link">⏱ Focus Time</a>
+            <a href="#analytics" class="nav-link">📊 Analytics</a>
+            <a href="#settings" class="nav-link">⚙ Settings</a>
+        </nav>
+
+        <div class="sidebar-note">
+            Stay focused.<br>
+            Achieve more. ✨
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1 id="page-title">Dashboard</h1>
+                <p id="page-subtitle">Welcome back! Let's achieve your goals.</p>
+            </div>
+
+            <div class="profile">
+                <div class="avatar" id="avatar">R</div>
+                <span id="profile-name">Ramya</span>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page active">
+
+            <div class="welcome-card">
+                <div>
+                    <p class="eyebrow">YOUR PRODUCTIVITY SPACE</p>
+                    <h2 id="welcome-title">Good morning, Ramya! 👋</h2>
+                    <p>Every small step brings you closer to your goals.</p>
+                </div>
+
+                <button class="primary" onclick="navigateTo('tasks')">
+                    View My Tasks
+                </button>
+            </div>
+
+            <div class="stats">
+                <article class="stat-card">
+                    <span>📝</span>
+                    <p>Total Tasks</p>
+                    <h2 id="total-tasks">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <span>✅</span>
+                    <p>Completed</p>
+                    <h2 id="completed-tasks">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <span>⏱</span>
+                    <p>Focus Sessions</p>
+                    <h2 id="focus-sessions">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <span>🚀</span>
+                    <p>Productivity</p>
+                    <h2 id="productivity">0%</h2>
+                </article>
+            </div>
+
+            <div class="content-card">
+                <div class="card-heading">
+                    <h2>Today's Progress</h2>
+                    <span id="progress-text">No tasks yet</span>
+                </div>
+
+                <div class="progress-track">
+                    <div id="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2>Upcoming Tasks</h2>
+                <div id="dashboard-task-list" class="upcoming-list"></div>
+            </div>
+
+        </section>
+
+        <!-- TASKS -->
+        <section id="tasks" class="page">
+
+            <div class="section-heading">
+                <div>
+                    <h2>My Tasks 📋</h2>
+                    <p>Organize your work and stay productive.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <form id="task-form" class="task-form">
+
+                    <input
+                        id="task-input"
+                        type="text"
+                        placeholder="What do you need to do?"
+                        maxlength="150"
+                        required
+                    >
+
+                    <select id="task-priority">
+                        <option value="Low">Low Priority</option>
+                        <option value="Medium" selected>Medium Priority</option>
+                        <option value="High">High Priority</option>
+                    </select>
+
+                    <button class="primary" type="submit">
+                        + Add Task
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+
+            <div id="task-list" class="task-list"></div>
+
+        </section>
+
+        <!-- FOCUS TIMER -->
+        <section id="focus" class="page">
+
+            <div class="focus-card content-card">
+
+                <p class="eyebrow">POMODORO TIMER</p>
+
+                <h2>Focus Time ⏱</h2>
+                <p>Stay focused. One task at a time.</p>
+
+                <div class="timer" id="timer">25:00</div>
+
+                <div class="timer-mode" id="timer-status">
+                    Ready for your focus session?
+                </div>
+
+                <div class="timer-buttons">
+                    <button class="primary" id="start-timer">▶ Start</button>
+                    <button class="secondary" id="pause-timer">⏸ Pause</button>
+                    <button class="secondary" id="reset-timer">↻ Reset</button>
+                </div>
+
+                <div class="timer-options">
+                    <button data-mode="focus" data-minutes="25" class="selected">
+                        Focus 25 min
+                    </button>
+
+                    <button data-mode="short" data-minutes="5">
+                        Short Break 5 min
+                    </button>
+
+                    <button data-mode="long" data-minutes="15">
+                        Long Break 15 min
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="content-card">
+                <h2>Focus Tips 💡</h2>
+
+                <ul class="tips">
+                    <li>Keep your phone away.</li>
+                    <li>Choose one task to complete.</li>
+                    <li>Take breaks between sessions.</li>
+                    <li>Celebrate your progress.</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- ANALYTICS -->
+        <section id="analytics" class="page">
+
+            <h2>Analytics 📊</h2>
+            <p class="section-description">
+                Understand your productivity and progress.
+            </p>
+
+            <div class="stats">
+
+                <article class="stat-card">
+                    <span>✅</span>
+                    <p>Tasks Completed</p>
+                    <h2 id="analytics-completed">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <span>📈</span>
+                    <p>Completion Rate</p>
+                    <h2 id="analytics-rate">0%</h2>
+                </article>
+
+                <article class="stat-card">
+                    <span>⏱</span>
+                    <p>Focus Sessions</p>
+                    <h2 id="analytics-focus">0</h2>
+                </article>
+
+            </div>
+
+            <div class="content-card">
+                <h2>Weekly Activity</h2>
+
+                <div class="chart">
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height:40%"></div>
+                        <span>Mon</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height:65%"></div>
+                        <span>Tue</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height:50%"></div>
+                        <span>Wed</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height:80%"></div>
+                        <span>Thu</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height:90%"></div>
+                        <span>Fri</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height:30%"></div>
+                        <span>Sat</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height:55%"></div>
+                        <span>Sun</span>
+                    </div>
+
+                </div>
+
+                <p class="muted">Sample weekly visualization.</p>
+            </div>
+
+        </section>
+
+        <!-- SETTINGS -->
+        <section id="settings" class="page">
+
+            <h2>Settings ⚙</h2>
+            <p class="section-description">
+                Customize your FocusFlow experience.
+            </p>
+
+            <div class="content-card settings-card">
+                <h3>Profile Settings</h3>
+
+                <label for="username">Your Name</label>
+
+                <div class="settings-row">
+                    <input type="text" id="username" maxlength="40">
+
+                    <button class="primary" id="save-profile">
+                        Save Profile
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-card settings-card">
+                <h3>Appearance</h3>
+
+                <label class="toggle-row">
+                    <span>Enable Light Mode</span>
+                    <input type="checkbox" id="light-mode">
+                </label>
+            </div>
+
+            <div class="content-card settings-card">
+                <h3>Preferences</h3>
+
+                <label class="toggle-row">
+                    <span>Enable Focus Notifications</span>
+                    <input type="checkbox" id="notifications">
+                </label>
+
+                <p class="muted">
+                    Enable browser notifications when your timer finishes.
+                </p>
+            </div>
+
+        </section>
+
+        <footer>Made with 💜 FocusFlow</footer>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
